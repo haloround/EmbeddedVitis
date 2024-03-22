@@ -1,0 +1,10 @@
+timestamp=[2024-03-15 16:30:17], mode=WORKBENCH_START, duration=0:00:05.720, duration_ms=5720, data={}
+timestamp=[2024-03-15 16:30:17], mode=WORKBENCH_UI_INIT, duration=0:00:00.402, duration_ms=402, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2024-03-15 16:30:21], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:03.321, duration_ms=3321, data={}
+timestamp=[2024-03-15 16:32:47], mode=APP_CREATION, duration=0:00:17.460, duration_ms=17460, data={name=gpio_emio, project_type=sdk, os=standalone, processor=ps7_cortexa9, runtime=cpp, platform=gpio_emio_wrapper, application_type=application}
+timestamp=[2024-03-17 14:57:26], mode=WORKBENCH_START, duration=0:00:12.064, duration_ms=12064, data={}
+timestamp=[2024-03-17 14:57:27], mode=WORKBENCH_UI_INIT, duration=0:00:00.707, duration_ms=707, data={editors_count=3, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,gpio_emio,gpio_emio_system,gpio_emio_wrapper}
+timestamp=[2024-03-17 14:57:27], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.173, duration_ms=173, data={}
+timestamp=[2024-03-17 16:17:30], mode=PLATFORM_GENERATION, duration=0:00:21.877, duration_ms=21877, data={name=gpio_emio_wrapper}
+timestamp=[2024-03-17 16:17:32], mode=BUILD, duration=0:00:00.684, duration_ms=684, data={name=gpio_emio, configuration=Debug, clean_build=false}
+timestamp=[2024-03-17 16:18:08], mode=BUILD, duration=0:00:00.890, duration_ms=890, data={name=gpio_emio, configuration=Debug, clean_build=false}

@@ -1,0 +1,58 @@
+22:41:45 INFO  : Registering command handlers for Vitis TCF services
+22:41:45 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\EmbeddedVitis\gpio_mio_interrupt\vitis\temp_xsdb_launch_script.tcl
+22:41:47 INFO  : XSCT server has started successfully.
+22:41:47 INFO  : Successfully done setting XSCT server connection channel  
+22:41:48 INFO  : plnx-install-location is set to ''
+22:41:48 INFO  : Successfully done setting workspace for the tool. 
+22:41:48 INFO  : Successfully done query RDI_DATADIR 
+22:41:48 INFO  : Platform repository initialization has completed.
+22:42:24 INFO  : Result from executing command 'getProjects': gpio_mio_interrupt_wrapper
+22:42:24 INFO  : Result from executing command 'getPlatforms': 
+22:42:24 WARN  : An unexpected exception occurred in the module 'platform project logging'
+22:42:24 INFO  : Platform 'gpio_mio_interrupt_wrapper' is added to custom repositories.
+22:42:30 INFO  : Platform 'gpio_mio_interrupt_wrapper' is added to custom repositories.
+22:43:02 INFO  : Result from executing command 'getProjects': gpio_mio_interrupt_wrapper
+22:43:02 INFO  : Result from executing command 'getPlatforms': gpio_mio_interrupt_wrapper|D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt_wrapper/export/gpio_mio_interrupt_wrapper/gpio_mio_interrupt_wrapper.xpfm
+22:43:02 INFO  : Checking for BSP changes to sync application flags for project 'gpio_mio_interrupt'...
+22:43:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:43:43 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+22:43:43 INFO  : 'jtag frequency' command is executed.
+22:43:43 INFO  : Context for 'APU' is selected.
+22:43:43 INFO  : System reset is completed.
+22:43:46 INFO  : 'after 3000' command is executed.
+22:43:46 INFO  : Context for 'APU' is selected.
+22:43:47 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt_wrapper/export/gpio_mio_interrupt_wrapper/hw/gpio_mio_interrupt_wrapper.xsa'.
+22:43:47 INFO  : 'configparams force-mem-access 1' command is executed.
+22:43:47 INFO  : Context for 'APU' is selected.
+22:43:47 INFO  : Sourcing of 'D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt/_ide/psinit/ps7_init.tcl' is done.
+22:43:47 INFO  : 'ps7_init' command is executed.
+22:43:47 INFO  : 'ps7_post_config' command is executed.
+22:43:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:43:47 INFO  : The application 'D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt/Debug/gpio_mio_interrupt.elf' is downloaded to processor 'ps7_cortexa9_0'.
+22:43:47 INFO  : 'configparams force-mem-access 0' command is executed.
+22:43:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt_wrapper/export/gpio_mio_interrupt_wrapper/hw/gpio_mio_interrupt_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/gpio_mio_interrupt/vitis/gpio_mio_interrupt/Debug/gpio_mio_interrupt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+22:43:47 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:43:48 INFO  : 'con' command is executed.
+22:43:48 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+22:43:48 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\gpio_mio_interrupt\vitis\gpio_mio_interrupt_system\_ide\scripts\debugger_gpio_mio_interrupt-default.tcl'
+10:19:30 INFO  : Disconnected from the channel tcfchan#2.

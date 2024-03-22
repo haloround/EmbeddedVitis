@@ -1,0 +1,24 @@
+Nothing to build in platform 'gpio_emio_wrapper'
+
+16:18:08 **** Incremental Build of configuration Debug for project gpio_emio ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -ID:/EmbeddedVitis/gpio_emio/vitis/gpio_emio_wrapper/export/gpio_emio_wrapper/sw/gpio_emio_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building target: gpio_emio.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LD:/EmbeddedVitis/gpio_emio/vitis/gpio_emio_wrapper/export/gpio_emio_wrapper/sw/gpio_emio_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "gpio_emio.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: gpio_emio.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size gpio_emio.elf  |tee "gpio_emio.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  36348	   2192	  22648	  61188	   ef04	gpio_emio.elf
+'Finished building: gpio_emio.elf.size'
+' '

@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"gpio_emio": {
+			"proto_instances": {
+			}
+		}
+	}
+}

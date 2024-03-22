@@ -1,0 +1,300 @@
+20:01:51 INFO  : Registering command handlers for Vitis TCF services
+20:01:52 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\EmbeddedVitis\helloworld\vitis\temp_xsdb_launch_script.tcl
+20:01:54 INFO  : Platform repository initialization has completed.
+20:01:56 INFO  : XSCT server has started successfully.
+20:01:56 INFO  : Successfully done setting XSCT server connection channel  
+20:01:56 INFO  : plnx-install-location is set to ''
+20:01:59 INFO  : Successfully done setting workspace for the tool. 
+20:01:59 INFO  : Successfully done query RDI_DATADIR 
+20:04:36 INFO  : Result from executing command 'getProjects': system_wrapper
+20:04:36 INFO  : Result from executing command 'getPlatforms': 
+20:04:36 WARN  : An unexpected exception occurred in the module 'platform project logging'
+20:04:36 INFO  : Platform 'system_wrapper' is added to custom repositories.
+20:04:47 INFO  : Platform 'system_wrapper' is added to custom repositories.
+20:07:27 INFO  : Result from executing command 'getProjects': system_wrapper
+20:07:27 INFO  : Result from executing command 'getPlatforms': system_wrapper|D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/system_wrapper.xpfm
+20:07:28 INFO  : Checking for BSP changes to sync application flags for project 'helloworld'...
+21:04:55 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:04:56 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+21:04:56 INFO  : 'jtag frequency' command is executed.
+21:04:56 INFO  : Context for 'APU' is selected.
+21:04:56 INFO  : System reset is completed.
+21:04:59 INFO  : 'after 3000' command is executed.
+21:04:59 INFO  : Context for 'APU' is selected.
+21:04:59 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa'.
+21:04:59 INFO  : 'configparams force-mem-access 1' command is executed.
+21:04:59 INFO  : Context for 'APU' is selected.
+21:04:59 INFO  : Sourcing of 'D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl' is done.
+21:04:59 INFO  : 'ps7_init' command is executed.
+21:04:59 INFO  : 'ps7_post_config' command is executed.
+21:04:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:04:59 INFO  : The application 'D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:04:59 INFO  : 'configparams force-mem-access 0' command is executed.
+21:04:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:05:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:05:00 INFO  : 'con' command is executed.
+21:05:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:05:00 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\helloworld\vitis\helloworld_system\_ide\scripts\debugger_helloworld-default.tcl'
+21:07:09 INFO  : Disconnected from the channel tcfchan#2.
+21:07:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:07:10 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+21:07:10 INFO  : 'jtag frequency' command is executed.
+21:07:10 INFO  : Context for 'APU' is selected.
+21:07:10 INFO  : System reset is completed.
+21:07:13 INFO  : 'after 3000' command is executed.
+21:07:13 INFO  : Context for 'APU' is selected.
+21:07:13 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa'.
+21:07:13 INFO  : 'configparams force-mem-access 1' command is executed.
+21:07:13 INFO  : Context for 'APU' is selected.
+21:07:13 INFO  : Sourcing of 'D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl' is done.
+21:07:13 INFO  : 'ps7_init' command is executed.
+21:07:13 INFO  : 'ps7_post_config' command is executed.
+21:07:13 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:07:14 INFO  : The application 'D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:07:14 INFO  : 'configparams force-mem-access 0' command is executed.
+21:07:14 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:07:14 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:07:14 INFO  : 'con' command is executed.
+21:07:14 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:07:14 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\helloworld\vitis\helloworld_system\_ide\scripts\debugger_helloworld-default.tcl'
+21:12:32 INFO  : Disconnected from the channel tcfchan#3.
+21:12:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:12:33 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+21:12:33 INFO  : 'jtag frequency' command is executed.
+21:12:33 INFO  : Context for 'APU' is selected.
+21:12:33 INFO  : System reset is completed.
+21:12:36 INFO  : 'after 3000' command is executed.
+21:12:36 INFO  : Context for 'APU' is selected.
+21:12:36 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa'.
+21:12:36 INFO  : 'configparams force-mem-access 1' command is executed.
+21:12:36 INFO  : Context for 'APU' is selected.
+21:12:36 INFO  : Sourcing of 'D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl' is done.
+21:12:36 INFO  : 'ps7_init' command is executed.
+21:12:36 INFO  : 'ps7_post_config' command is executed.
+21:12:36 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:12:37 INFO  : The application 'D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:12:37 INFO  : 'configparams force-mem-access 0' command is executed.
+21:12:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:12:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:12:37 INFO  : 'con' command is executed.
+21:12:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:12:37 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\helloworld\vitis\helloworld_system\_ide\scripts\debugger_helloworld-default.tcl'
+21:16:10 INFO  : Disconnected from the channel tcfchan#4.
+21:16:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:16:11 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+21:16:11 INFO  : 'jtag frequency' command is executed.
+21:16:11 INFO  : Context for 'APU' is selected.
+21:16:11 INFO  : System reset is completed.
+21:16:14 INFO  : 'after 3000' command is executed.
+21:16:14 INFO  : Context for 'APU' is selected.
+21:16:14 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa'.
+21:16:14 INFO  : 'configparams force-mem-access 1' command is executed.
+21:16:14 INFO  : Context for 'APU' is selected.
+21:16:14 INFO  : Sourcing of 'D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl' is done.
+21:16:15 INFO  : 'ps7_init' command is executed.
+21:16:15 INFO  : 'ps7_post_config' command is executed.
+21:16:15 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:16:15 INFO  : The application 'D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:16:15 INFO  : 'configparams force-mem-access 0' command is executed.
+21:16:15 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:16:15 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:16:15 INFO  : 'con' command is executed.
+21:16:15 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:16:15 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\helloworld\vitis\helloworld_system\_ide\scripts\debugger_helloworld-default.tcl'
+21:19:54 INFO  : Disconnected from the channel tcfchan#5.
+21:19:55 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:19:56 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+21:19:56 INFO  : 'jtag frequency' command is executed.
+21:19:56 INFO  : Context for 'APU' is selected.
+21:19:56 INFO  : System reset is completed.
+21:19:59 INFO  : 'after 3000' command is executed.
+21:19:59 INFO  : Context for 'APU' is selected.
+21:19:59 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa'.
+21:19:59 INFO  : 'configparams force-mem-access 1' command is executed.
+21:19:59 INFO  : Context for 'APU' is selected.
+21:19:59 INFO  : Sourcing of 'D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl' is done.
+21:19:59 INFO  : 'ps7_init' command is executed.
+21:19:59 INFO  : 'ps7_post_config' command is executed.
+21:19:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:19:59 INFO  : The application 'D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:19:59 INFO  : 'configparams force-mem-access 0' command is executed.
+21:19:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:19:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:19:59 INFO  : 'con' command is executed.
+21:19:59 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:19:59 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\helloworld\vitis\helloworld_system\_ide\scripts\debugger_helloworld-default.tcl'
+21:23:04 INFO  : Disconnected from the channel tcfchan#6.
+21:23:36 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\EmbeddedVitis\helloworld\vitis\temp_xsdb_launch_script.tcl
+21:23:38 INFO  : XSCT server has started successfully.
+21:23:38 INFO  : Successfully done setting XSCT server connection channel  
+21:23:39 INFO  : plnx-install-location is set to ''
+21:23:39 INFO  : Successfully done setting workspace for the tool. 
+21:23:42 INFO  : Platform repository initialization has completed.
+21:23:42 INFO  : Successfully done query RDI_DATADIR 
+21:23:42 INFO  : Registering command handlers for Vitis TCF services
+21:26:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:26:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+21:26:20 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+21:27:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:27:27 INFO  : Jtag cable 'Digilent JTAG-SMT2 210251A08870' is selected.
+21:27:27 INFO  : 'jtag frequency' command is executed.
+21:27:27 INFO  : Context for 'APU' is selected.
+21:27:27 INFO  : System reset is completed.
+21:27:30 INFO  : 'after 3000' command is executed.
+21:27:30 INFO  : Context for 'APU' is selected.
+21:27:30 INFO  : Hardware design and registers information is loaded from 'D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa'.
+21:27:30 INFO  : 'configparams force-mem-access 1' command is executed.
+21:27:30 INFO  : Context for 'APU' is selected.
+21:27:30 INFO  : Sourcing of 'D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl' is done.
+21:27:31 INFO  : 'ps7_init' command is executed.
+21:27:31 INFO  : 'ps7_post_config' command is executed.
+21:27:31 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:27:31 INFO  : The application 'D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:27:31 INFO  : 'configparams force-mem-access 0' command is executed.
+21:27:31 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/EmbeddedVitis/helloworld/vitis/system_wrapper/export/system_wrapper/hw/system_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/EmbeddedVitis/helloworld/vitis/helloworld/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/EmbeddedVitis/helloworld/vitis/helloworld/Debug/helloworld.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:27:31 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:27:31 INFO  : 'con' command is executed.
+21:27:31 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:27:31 INFO  : Launch script is exported to file 'D:\EmbeddedVitis\helloworld\vitis\helloworld_system\_ide\scripts\debugger_helloworld-default.tcl'
+23:59:48 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\EmbeddedVitis\helloworld\vitis\temp_xsdb_launch_script.tcl
+13:03:09 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\EmbeddedVitis\helloworld\vitis\temp_xsdb_launch_script.tcl
+13:03:12 INFO  : XSCT server has started successfully.
+13:03:12 INFO  : plnx-install-location is set to ''
+13:03:12 INFO  : Successfully done setting XSCT server connection channel  
+13:03:12 INFO  : Successfully done setting workspace for the tool. 
+13:03:17 INFO  : Platform repository initialization has completed.
+13:03:17 INFO  : Registering command handlers for Vitis TCF services
+13:03:21 INFO  : Successfully done query RDI_DATADIR 

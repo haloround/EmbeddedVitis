@@ -1,0 +1,7 @@
+/*gpio_mio_interrupt_wrapper*/
+the_ROM_image:
+{
+  [bootloader]<gpio_mio_interrupt_wrapper/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}

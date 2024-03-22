@@ -1,0 +1,7 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2020.2/data/xilinx_vip/include" --include "../../../../gpio_emio.gen/sources_1/bd/gpio_emio/ipshared/ec67/hdl" --include "../../../../gpio_emio.gen/sources_1/bd/gpio_emio/ipshared/34f8/hdl" \
+"../../../../gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/sim/gpio_emio_processing_system7_0_1.v" \
+"../../../../gpio_emio.gen/sources_1/bd/gpio_emio/sim/gpio_emio.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

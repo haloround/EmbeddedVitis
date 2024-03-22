@@ -1,0 +1,306 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Mar 15 16:25:20 2024
+# Process ID: 19584
+# Current directory: D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1
+# Command line: vivado.exe -log gpio_emio_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source gpio_emio_wrapper.tcl
+# Log file: D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1/gpio_emio_wrapper.vds
+# Journal file: D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source gpio_emio_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+Command: synth_design -top gpio_emio_wrapper -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 15296
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:04 . Memory (MB): peak = 1144.359 ; gain = 4.184
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'gpio_emio_wrapper' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/hdl/gpio_emio_wrapper.v:12]
+INFO: [Synth 8-6157] synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+	Parameter DRIVE bound to: 12 - type: integer 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+	Parameter SLEW bound to: SLOW - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (1#1) [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:36242]
+INFO: [Synth 8-6157] synthesizing module 'gpio_emio' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/synth/gpio_emio.v:13]
+INFO: [Synth 8-6157] synthesizing module 'gpio_emio_processing_system7_0_1' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:60]
+INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
+	Parameter C_USE_DEFAULT_ACP_USER_VAL bound to: 0 - type: integer 
+	Parameter C_S_AXI_ACP_ARUSER_VAL bound to: 31 - type: integer 
+	Parameter C_S_AXI_ACP_AWUSER_VAL bound to: 31 - type: integer 
+	Parameter C_M_AXI_GP0_THREAD_ID_WIDTH bound to: 12 - type: integer 
+	Parameter C_M_AXI_GP1_THREAD_ID_WIDTH bound to: 12 - type: integer 
+	Parameter C_M_AXI_GP0_ENABLE_STATIC_REMAP bound to: 0 - type: integer 
+	Parameter C_M_AXI_GP1_ENABLE_STATIC_REMAP bound to: 0 - type: integer 
+	Parameter C_M_AXI_GP0_ID_WIDTH bound to: 12 - type: integer 
+	Parameter C_M_AXI_GP1_ID_WIDTH bound to: 12 - type: integer 
+	Parameter C_S_AXI_GP0_ID_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_GP1_ID_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_HP0_ID_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_HP1_ID_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_HP2_ID_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_HP3_ID_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_ACP_ID_WIDTH bound to: 3 - type: integer 
+	Parameter C_S_AXI_HP0_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter C_S_AXI_HP1_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter C_S_AXI_HP2_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter C_S_AXI_HP3_DATA_WIDTH bound to: 64 - type: integer 
+	Parameter C_INCLUDE_ACP_TRANS_CHECK bound to: 0 - type: integer 
+	Parameter C_NUM_F2P_INTR_INPUTS bound to: 1 - type: integer 
+	Parameter C_FCLK_CLK0_BUF bound to: FALSE - type: string 
+	Parameter C_FCLK_CLK1_BUF bound to: FALSE - type: string 
+	Parameter C_FCLK_CLK2_BUF bound to: FALSE - type: string 
+	Parameter C_FCLK_CLK3_BUF bound to: FALSE - type: string 
+	Parameter C_EMIO_GPIO_WIDTH bound to: 1 - type: integer 
+	Parameter C_INCLUDE_TRACE_BUFFER bound to: 0 - type: integer 
+	Parameter C_TRACE_BUFFER_FIFO_SIZE bound to: 128 - type: integer 
+	Parameter C_TRACE_BUFFER_CLOCK_DELAY bound to: 12 - type: integer 
+	Parameter USE_TRACE_DATA_EDGE_DETECTOR bound to: 0 - type: integer 
+	Parameter C_TRACE_PIPELINE_WIDTH bound to: 8 - type: integer 
+	Parameter C_PS7_SI_REV bound to: PRODUCTION - type: string 
+	Parameter C_EN_EMIO_ENET0 bound to: 0 - type: integer 
+	Parameter C_EN_EMIO_ENET1 bound to: 0 - type: integer 
+	Parameter C_EN_EMIO_TRACE bound to: 0 - type: integer 
+	Parameter C_DQ_WIDTH bound to: 32 - type: integer 
+	Parameter C_DQS_WIDTH bound to: 4 - type: integer 
+	Parameter C_DM_WIDTH bound to: 4 - type: integer 
+	Parameter C_MIO_PRIMITIVE bound to: 54 - type: integer 
+	Parameter C_PACKAGE_NAME bound to: clg400 - type: string 
+	Parameter C_IRQ_F2P_MODE bound to: DIRECT - type: string 
+	Parameter C_TRACE_INTERNAL_WIDTH bound to: 2 - type: integer 
+	Parameter C_EN_EMIO_PJTAG bound to: 0 - type: integer 
+	Parameter C_USE_AXI_NONSECURE bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_HP0 bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_HP1 bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_HP2 bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_HP3 bound to: 0 - type: integer 
+	Parameter C_USE_M_AXI_GP0 bound to: 0 - type: integer 
+	Parameter C_USE_M_AXI_GP1 bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_GP0 bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_GP1 bound to: 0 - type: integer 
+	Parameter C_USE_S_AXI_ACP bound to: 0 - type: integer 
+	Parameter C_GP0_EN_MODIFIABLE_TXN bound to: 1 - type: integer 
+	Parameter C_GP1_EN_MODIFIABLE_TXN bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'BIBUF' [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:730]
+INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (2#1) [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:730]
+INFO: [Synth 8-6157] synthesizing module 'PS7' [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:62034]
+INFO: [Synth 8-6155] done synthesizing module 'PS7' (3#1) [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:62034]
+INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (4#1) [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
+WARNING: [Synth 8-7071] port 'M_AXI_GP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'M_AXI_GP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_GP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_GP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_ACP_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_HP1_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_HP2_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'S_AXI_HP3_ARESETN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'DMA0_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'DMA1_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'DMA2_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7071] port 'DMA3_RSTN' of module 'processing_system7_v5_5_processing_system7' is unconnected for instance 'inst' [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+WARNING: [Synth 8-7023] instance 'inst' of module 'processing_system7_v5_5_processing_system7' has 685 connections declared, but only 672 given [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:195]
+INFO: [Synth 8-6155] done synthesizing module 'gpio_emio_processing_system7_0_1' (5#1) [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/synth/gpio_emio_processing_system7_0_1.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'gpio_emio' (6#1) [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/synth/gpio_emio.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'gpio_emio_wrapper' (7#1) [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/hdl/gpio_emio_wrapper.v:12]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1207.766 ; gain = 67.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1207.766 ; gain = 67.590
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1207.766 ; gain = 67.590
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1207.766 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/gpio_emio_processing_system7_0_1.xdc] for cell 'gpio_emio_i/processing_system7_0/inst'
+Finished Parsing XDC File [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/gpio_emio_processing_system7_0_1.xdc] for cell 'gpio_emio_i/processing_system7_0/inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [d:/EmbeddedVitis/gpio_emio/gpio_emio.gen/sources_1/bd/gpio_emio/ip/gpio_emio_processing_system7_0_1/gpio_emio_processing_system7_0_1.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/gpio_emio_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/gpio_emio_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [D:/EmbeddedVitis/gpio_emio/gpio_emio.srcs/constrs_1/new/pin.xdc]
+Finished Parsing XDC File [D:/EmbeddedVitis/gpio_emio/gpio_emio.srcs/constrs_1/new/pin.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/EmbeddedVitis/gpio_emio/gpio_emio.srcs/constrs_1/new/pin.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/gpio_emio_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/gpio_emio_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/gpio_emio_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/gpio_emio_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1225.145 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1225.145 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 1225.145 ; gain = 84.969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 1225.145 ; gain = 84.969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for gpio_emio_i/processing_system7_0/inst. (constraint file  D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1/dont_touch.xdc, line 13).
+Applied set_property KEEP_HIERARCHY = SOFT for gpio_emio_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for gpio_emio_i/processing_system7_0. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1225.145 ; gain = 84.969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1225.145 ; gain = 84.969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:16 . Memory (MB): peak = 1225.145 ; gain = 84.969
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 1434.574 ; gain = 294.398
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 1435.020 ; gain = 294.844
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 1454.152 ; gain = 313.977
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |BIBUF |   130|
+|2     |LUT1  |    25|
+|3     |PS7   |     1|
+|4     |IOBUF |     1|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:24 . Memory (MB): peak = 1461.430 ; gain = 303.875
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1461.430 ; gain = 321.254
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1461.430 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1479.117 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+INFO: [Common 17-83] Releasing license: Synthesis
+36 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1479.117 ; gain = 338.941
+INFO: [Common 17-1381] The checkpoint 'D:/EmbeddedVitis/gpio_emio/gpio_emio.runs/synth_1/gpio_emio_wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file gpio_emio_wrapper_utilization_synth.rpt -pb gpio_emio_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 15 16:26:01 2024...

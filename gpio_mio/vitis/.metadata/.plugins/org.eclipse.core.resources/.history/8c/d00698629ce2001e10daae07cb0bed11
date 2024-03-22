@@ -1,0 +1,42 @@
+#include "xparameters.h"
+#include "xstatus.h"
+#include "xil_printf.h"
+#include "xgpiops.h"
+#include "sleep.h"
+
+#define GPIO_DEVICE_ID   XPAR_XGPIOPS_0_DEVICE_ID
+#define MIOLED0  7  
+#define MIOLED1  8
+
+XGpioPs Gpio;
+
+int main()
+{
+    int Status;
+    XGpioPs_Config *ConfigPtr;
+    
+    print("MIO Test!\n\r");
+    ConfigPtr = XGpioPs_LookupConfig(GPIO_DEVICE_ID);
+    Status = XGpioPs_CfgInitialize(&Gpio, ConfigPtr, ConfigPtr -> BaseAddr);
+
+    if(Status != XST_SUCCESS){
+        return XST_FAILURE;
+    }
+
+    XGpioPs_SetDirectionPin(&Gpio, MIOLED0, 1);
+    XGpioPs_SetDirectionPin(&Gpio, MIOLED1, 1);
+
+    XGpioPs_SetOutputEnablePin(&Gpio, MIOLED0, 1);
+    XGpioPs_SetOutputEnablePin(&Gpio, MIOLED1, 1);
+
+    while (1)
+    {
+        XGpioPs_WritePin(&Gpio, MIOLED0, 0x0);
+        XGpioPs_WritePin(&Gpio, MIOLED1, 0x0);
+        sleep(1);
+        XGpioPs_WritePin(&Gpio, MIOLED1, 0x1);
+        XGpioPs_WritePin(&Gpio, MIOLED1, 0x1);
+        sleep(1);
+    }
+    return XST_SUCCESS;
+}
