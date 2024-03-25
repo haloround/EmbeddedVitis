@@ -19,3 +19,5 @@ platform active {axi_dma_loop_wrapper}
 domain active {zynq_fsbl}
 domain active {standalone_ps7_cortexa9_0}
 platform generate -quick
+platform generate
+platform generate
