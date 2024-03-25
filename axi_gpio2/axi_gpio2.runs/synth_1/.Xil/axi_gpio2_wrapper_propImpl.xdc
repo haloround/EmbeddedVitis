@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:D:/EmbeddedVitis/axi_gpio2/axi_gpio2.srcs/constrs_1/new/axi_gpio2.xdc rfile:../../../axi_gpio2.srcs/constrs_1/new/axi_gpio2.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN L14 [get_ports {AXI_GPIO_KEY_tri_io[0]}]
+set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN K16 [get_ports {AXI_GPIO_KEY_tri_io[1]}]

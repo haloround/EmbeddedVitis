@@ -1,0 +1,7 @@
+/*axi_gpio_wrapper*/
+the_ROM_image:
+{
+  [bootloader]<axi_gpio_wrapper/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}

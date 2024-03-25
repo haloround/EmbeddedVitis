@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="axi_gpio_fsbl" location="D:/EmbeddedVitis/axi_gpio_fsbl/vitis/axi_gpio_fsbl" platform="D:/EmbeddedVitis/axi_gpio_fsbl/vitis/axi_gpio_wrapper/export/axi_gpio_wrapper/axi_gpio_wrapper.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="axi_gpio_fsbl_system" sysConfig="axi_gpio_wrapper" runtime="cpp" cpu="standalone_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="ccbd5ab176f70878d8ed6c0450817e02">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1911052286">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1168374074" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

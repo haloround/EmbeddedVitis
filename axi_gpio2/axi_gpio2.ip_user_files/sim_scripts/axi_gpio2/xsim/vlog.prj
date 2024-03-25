@@ -1,0 +1,8 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2020.2/data/xilinx_vip/include" --include "../../../../axi_gpio2.gen/sources_1/bd/axi_gpio2/ipshared/ec67/hdl" --include "../../../../axi_gpio2.gen/sources_1/bd/axi_gpio2/ipshared/34f8/hdl" \
+"../../../../axi_gpio2.gen/sources_1/bd/axi_gpio2/ip/axi_gpio2_processing_system7_0_0/sim/axi_gpio2_processing_system7_0_0.v" \
+"../../../../axi_gpio2.gen/sources_1/bd/axi_gpio2/ip/axi_gpio2_auto_pc_0/sim/axi_gpio2_auto_pc_0.v" \
+"../../../../axi_gpio2.gen/sources_1/bd/axi_gpio2/sim/axi_gpio2.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

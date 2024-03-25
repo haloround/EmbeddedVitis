@@ -1,0 +1,12 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2020.2/data/xilinx_vip/include" --include "../../../../user_led.gen/sources_1/bd/user_led/ipshared/ec67/hdl" --include "../../../../user_led.gen/sources_1/bd/user_led/ipshared/34f8/hdl" \
+"../../../../user_led.gen/sources_1/bd/user_led/ip/user_led_processing_system7_0_0/sim/user_led_processing_system7_0_0.v" \
+"../../../../user_led.gen/sources_1/bd/user_led/ipshared/dea9/hdl/breath_led.v" \
+"../../../../user_led.gen/sources_1/bd/user_led/ipshared/dea9/hdl/breath_led_ip_v1_0_S0_AXI.v" \
+"../../../../user_led.gen/sources_1/bd/user_led/ipshared/dea9/hdl/breath_led_ip_v1_0.v" \
+"../../../../user_led.gen/sources_1/bd/user_led/ip/user_led_breath_led_ip_0_0/sim/user_led_breath_led_ip_0_0.v" \
+"../../../../user_led.gen/sources_1/bd/user_led/ip/user_led_auto_pc_0/sim/user_led_auto_pc_0.v" \
+"../../../../user_led.gen/sources_1/bd/user_led/sim/user_led.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

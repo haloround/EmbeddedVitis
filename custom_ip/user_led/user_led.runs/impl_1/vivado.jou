@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Mar 23 17:18:13 2024
+# Process ID: 40012
+# Current directory: D:/EmbeddedVitis/custom_ip/user_led/user_led.runs/impl_1
+# Command line: vivado.exe -log user_led_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source user_led_wrapper.tcl -notrace
+# Log file: D:/EmbeddedVitis/custom_ip/user_led/user_led.runs/impl_1/user_led_wrapper.vdi
+# Journal file: D:/EmbeddedVitis/custom_ip/user_led/user_led.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source user_led_wrapper.tcl -notrace

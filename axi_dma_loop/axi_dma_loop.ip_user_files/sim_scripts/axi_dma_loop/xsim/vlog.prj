@@ -1,0 +1,14 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2020.2/data/xilinx_vip/include" --include "../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ipshared/ec67/hdl" --include "../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ipshared/34f8/hdl" --include "../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ipshared/8713/hdl" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_processing_system7_0_1/sim/axi_dma_loop_processing_system7_0_1.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_axis_data_fifo_0_1/sim/axi_dma_loop_axis_data_fifo_0_1.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_xlconcat_0_2/sim/axi_dma_loop_xlconcat_0_2.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_auto_pc_0/sim/axi_dma_loop_auto_pc_0.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_xbar_0/sim/axi_dma_loop_xbar_0.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_auto_us_0/sim/axi_dma_loop_auto_us_0.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_auto_us_1/sim/axi_dma_loop_auto_us_1.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/ip/axi_dma_loop_auto_pc_1/sim/axi_dma_loop_auto_pc_1.v" \
+"../../../../axi_dma_loop.gen/sources_1/bd/axi_dma_loop/sim/axi_dma_loop.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
