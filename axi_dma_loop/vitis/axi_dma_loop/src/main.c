@@ -1,11 +1,21 @@
 /*
  * @Author: lkx 1620558464@qq.com
  * @Date: 2024-03-24 16:14:58
- * @LastEditors: lkx 1620558464@qq.com
- * @LastEditTime: 2024-03-25 15:21:18
+ * @LastEditors: likaixiang 1620558464@qq.com
+ * @LastEditTime: 2024-03-25 20:48:45
  * @FilePath: \EmbeddedVitis\axi_dma_loop\vitis\axi_dma_loop\src\main.c
  * @Description: 
  */
+
+/*
+DMA,硬件实现存储器与存储器之间或者存储器与I/O外设间直接进行高速数据传输的内存技术。
+它允许不同速度的硬件设备进行沟通，而不用使用中央处理器的中断负载。
+*/
+
+/*实验具体流程为：
+PS端产生测试数据写入到DDR3中，然后PL端AXI DMA IP核从DDR3中读取数据，将读取到的数据存储到AXI Stream Data FIFO中，
+然后再将AXI Stream Data FIFO中的数据写回到DDR3中。并判断DDR3读取的数据和写入的数据是否一致。
+*/
 #include "xparameters.h"
 #include "xaxidma.h"
 #include "xil_exception.h"
