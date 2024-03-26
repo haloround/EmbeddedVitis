@@ -1,0 +1,10 @@
+16:21:49 **** Build of configuration Debug for project axi_dma_loop_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 2146 D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop_wrapper/export/axi_dma_loop_wrapper/axi_dma_loop_wrapper.xpfm standalone_ps7_cortexa9_0 D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop_system/Debug/system.bif
+sdcard_gen --xpfm D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop_wrapper/export/axi_dma_loop_wrapper/axi_dma_loop_wrapper.xpfm --sys_config axi_dma_loop_wrapper --bif D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop_system/Debug/system.bif --bitstream D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop/_ide/bitstream/axi_dma_loop_wrapper.bit --elf D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop/Debug/axi_dma_loop.elf,ps7_cortexa9_0
+creating BOOT.BIN using D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop/_ide/bitstream/axi_dma_loop_wrapper.bit
+Running D:/Xilinx/Vitis/2020.2/bin/bootgen  -image D:/lkx/EmbeddedVitis/axi_dma_loop/vitis/axi_dma_loop_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+16:21:54 Build Finished (took 5s.180ms)
+

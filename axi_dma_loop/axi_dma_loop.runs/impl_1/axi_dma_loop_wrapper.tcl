@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "D:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.runs/impl_1/axi_dma_loop_wrapper.tcl"
+  variable script "D:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.runs/impl_1/axi_dma_loop_wrapper.tcl"
   variable category "vivado_impl"
 }
 
@@ -115,9 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {HDL-1065} -limit 10000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -125,24 +122,24 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 2
+  set_param chipscope.maxJobs 5
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7z010clg400-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir D:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.cache/wt [current_project]
-  set_property parent.project_path D:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.xpr [current_project]
-  set_property ip_output_repo D:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.cache/wt [current_project]
+  set_property parent.project_path D:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.xpr [current_project]
+  set_property ip_output_repo D:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet D:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.runs/synth_1/axi_dma_loop_wrapper.dcp
+  add_files -quiet D:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.runs/synth_1/axi_dma_loop_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files D:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.srcs/sources_1/bd/axi_dma_loop/axi_dma_loop.bd
+  add_files D:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.srcs/sources_1/bd/axi_dma_loop/axi_dma_loop.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
 OPTRACE "read constraints: implementation" END { }

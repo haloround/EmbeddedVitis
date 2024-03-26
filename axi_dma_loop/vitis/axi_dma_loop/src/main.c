@@ -2,19 +2,19 @@
  * @Author: lkx 1620558464@qq.com
  * @Date: 2024-03-24 16:14:58
  * @LastEditors: likaixiang 1620558464@qq.com
- * @LastEditTime: 2024-03-26 14:37:32
+ * @LastEditTime: 2024-03-26 16:33:27
  * @FilePath: \EmbeddedVitis\axi_dma_loop\vitis\axi_dma_loop\src\main.c
  * @Description: 
  */
 
 /*
-DMA,ç¡¬ä»¶å®ç°å­˜å‚¨å™¨ä¸å­˜å‚¨å™¨ä¹‹é—´æˆ–è€…å­˜å‚¨å™¨ä¸I/Oå¤–è®¾é—´ç›´æ¥è¿›è¡Œé«˜é€Ÿæ•°æ®ä¼ è¾“çš„å†…å­˜æŠ€æœ¯ã€‚
-å®ƒå…è®¸ä¸åŒé€Ÿåº¦çš„ç¡¬ä»¶è®¾å¤‡è¿›è¡Œæ²Ÿé€šï¼Œè€Œä¸ç”¨ä½¿ç”¨ä¸­å¤®å¤„ç†å™¨çš„ä¸­æ–­è´Ÿè½½ã€‚
+DMA,Ó²¼şÊµÏÖ´æ´¢Æ÷Óë´æ´¢Æ÷Ö®¼ä»òÕß´æ´¢Æ÷ÓëI/OÍâÉè¼äÖ±½Ó½øĞĞ¸ßËÙÊı¾İ´«ÊäµÄÄÚ´æ¼¼Êõ¡£
+ËüÔÊĞí²»Í¬ËÙ¶ÈµÄÓ²¼şÉè±¸½øĞĞ¹µÍ¨£¬¶ø²»ÓÃÊ¹ÓÃÖĞÑë´¦ÀíÆ÷µÄÖĞ¶Ï¸ºÔØ¡£
 */
 
-/*å®éªŒå…·ä½“æµç¨‹ä¸ºï¼š
-PSç«¯äº§ç”Ÿæµ‹è¯•æ•°æ®å†™å…¥åˆ°DDR3ä¸­ï¼Œç„¶åPLç«¯AXI DMA IPæ ¸ä»DDR3ä¸­è¯»å–æ•°æ®ï¼Œå°†è¯»å–åˆ°çš„æ•°æ®å­˜å‚¨åˆ°AXI Stream Data FIFOä¸­ï¼Œ
-ç„¶åå†å°†AXI Stream Data FIFOä¸­çš„æ•°æ®å†™å›åˆ°DDR3ä¸­ã€‚å¹¶åˆ¤æ–­DDR3è¯»å–çš„æ•°æ®å’Œå†™å…¥çš„æ•°æ®æ˜¯å¦ä¸€è‡´ã€‚
+/*ÊµÑé¾ßÌåÁ÷³ÌÎª£º
+PS¶Ë²úÉú²âÊÔÊı¾İĞ´Èëµ½DDR3ÖĞ£¬È»ºóPL¶ËAXI DMA IPºË´ÓDDR3ÖĞ¶ÁÈ¡Êı¾İ£¬½«¶ÁÈ¡µ½µÄÊı¾İ´æ´¢µ½AXI Stream Data FIFOÖĞ£¬
+È»ºóÔÙ½«AXI Stream Data FIFOÖĞµÄÊı¾İĞ´»Øµ½DDR3ÖĞ¡£²¢ÅĞ¶ÏDDR3¶ÁÈ¡µÄÊı¾İºÍĞ´ÈëµÄÊı¾İÊÇ·ñÒ»ÖÂ¡£
 */
 #include "xparameters.h"
 #include "xaxidma.h"
@@ -23,17 +23,17 @@ PSç«¯äº§ç”Ÿæµ‹è¯•æ•°æ®å†™å…¥åˆ°DDR3ä¸­ï¼Œç„¶åPLç«¯AXI DMA IPæ ¸ä»DDR3ä¸­è¯»å
 
 /************************** Constant Definitions *****************************/
 
-#define DMA_DEV_ID XPAR_AXIDMA_0_DEVICE_ID
-#define RX_INTR_ID XPAR_FABRIC_AXIDMA_0_S2MM_INTROUT_VEC_ID
-#define TX_INTR_ID XPAR_FABRIC_AXIDMA_0_MM2S_INTROUT_VEC_ID
-#define INTC_DEVICE_ID XPAR_SCUGIC_SINGLE_DEVICE_ID
-#define DDR_BASE_ADDR XPAR_PS7_DDRC_0_S_AXI_BASEADDR
-#define MEM_BASE_ADDR (DDR_BASE_ADDR + 0x10000000)
-#define TX_BUFFER_BASE (MEM_BASE_ADDR + 0x00100000)
-#define RX_BUFFER_BASE (MEM_BASE_ADDR + 0x00300000)
-#define RESET_TIMEOUT_COUNTER 10000
-#define TEST_START_VALUE 0x0
-#define MAX_PKT_LEN 0x100
+ #define DMA_DEV_ID          XPAR_AXIDMA_0_DEVICE_ID
+ #define RX_INTR_ID          XPAR_FABRIC_AXIDMA_0_S2MM_INTROUT_VEC_ID
+ #define TX_INTR_ID          XPAR_FABRIC_AXIDMA_0_MM2S_INTROUT_VEC_ID
+ #define INTC_DEVICE_ID      XPAR_SCUGIC_SINGLE_DEVICE_ID
+ #define DDR_BASE_ADDR       XPAR_PS7_DDR_0_S_AXI_BASEADDR   //0x00100000
+ #define MEM_BASE_ADDR       (DDR_BASE_ADDR + 0x1000000)     //0x01100000
+ #define TX_BUFFER_BASE      (MEM_BASE_ADDR + 0x00100000)    //0x01200000
+ #define RX_BUFFER_BASE      (MEM_BASE_ADDR + 0x00300000)    //0x01400000
+ #define RESET_TIMEOUT_COUNTER   10000    //¸´Î»Ê±¼ä
+ #define TEST_START_VALUE        0x0      //²âÊÔÆğÊ¼Öµ
+ #define MAX_PKT_LEN             0x100    //·¢ËÍ°ü³¤¶È
 
 /************************** Function Prototypes ******************************/
 
@@ -64,38 +64,38 @@ int main(void)
 
     xil_printf("\r\n----Entering main()----\r\n");
 
-    //æŸ¥æ‰¾AXI DMA IPæ ¸çš„é…ç½®ä¿¡æ¯
+    //²éÕÒAXI DMA IPºËµÄÅäÖÃĞÅÏ¢
     axidma_config = XAxiDma_LookupConfig(DMA_DEV_ID);
     if(!axidma_config) {
         xil_printf("No config found for %d\r\n", DMA_DEV_ID);
         return XST_FAILURE;
     }
 
-    //åˆå§‹åŒ–AXI DMA IPæ ¸å¼•æ“
+    //³õÊ¼»¯AXI DMA IPºËÒıÇæ
     status = XAxiDma_CfgInitialize(&axidma, axidma_config);
     if(status != XST_SUCCESS) {
         xil_printf("Initialization failed %d\r\n", status);
         return XST_FAILURE;
     }
-    //æœ¬æ¬¡å®éªŒä¸­AXI DMA IPä¸éœ€è¦è®¾ç½®ä¸ºSGæ¨¡å¼
+    //±¾´ÎÊµÑéÖĞAXI DMA IP²»ĞèÒªÉèÖÃÎªSGÄ£Ê½
     if(XAxiDma_HasSg(&axidma)) {
         xil_printf("Device configured as SG mode\r\n");
         return XST_FAILURE;
     }
 
-    //è®¾ç½®ä¸­æ–­ç³»ç»Ÿï¼Œå¹¶è¿æ¥AXI DMAçš„ä¸­æ–­å¤„ç†å‡½æ•°
+    //ÉèÖÃÖĞ¶ÏÏµÍ³£¬²¢Á¬½ÓAXI DMAµÄÖĞ¶Ï´¦Àíº¯Êı
     status = setup_intr_system(&intc, &axidma, TX_INTR_ID, RX_INTR_ID);
     if(status != XST_SUCCESS) {
         xil_printf("Failed intr setup\r\n");
         return XST_FAILURE;
     }
 
-    //åˆå§‹åŒ–æ ‡å¿—ä¿¡å·
-    tx_done = 0;//å‘é€æ“ä½œå®Œæˆæ—¶ï¼Œè®¾ç½®ä¸º1
-    rx_done = 0;//æ¥æ”¶æ“ä½œå®Œæˆæ—¶ï¼Œè®¾ç½®ä¸º1
-    error = 0;//æ ‡å¿—æ˜¯å¦å‘ç”Ÿé”™è¯¯
+    //³õÊ¼»¯±êÖ¾ĞÅºÅ
+    tx_done = 0;//·¢ËÍ²Ù×÷Íê³ÉÊ±£¬ÉèÖÃÎª1
+    rx_done = 0;//½ÓÊÕ²Ù×÷Íê³ÉÊ±£¬ÉèÖÃÎª1
+    error = 0;//±êÖ¾ÊÇ·ñ·¢Éú´íÎó
 
-    //å°†256ä¸ªæ•°æ®å†™å…¥å‘é€ç¼“å†²åŒºtx_buffer_ptr
+    //½«256¸öÊı¾İĞ´Èë·¢ËÍ»º³åÇøtx_buffer_ptr
     value = TEST_START_VALUE;
     for (int i = 0; i < MAX_PKT_LEN; i++)
     {
@@ -103,10 +103,10 @@ int main(void)
         value = (value + 1) & 0xFF;
     }
 
-    //åˆ·æ–°Data Cacheï¼Œåˆ·æ–°æ•°æ®ç¼“å­˜ä»¥ç¡®ä¿å†™å…¥ç¼“å†²åŒºçš„æ•°æ®è¢«åŠæ—¶æ›´æ–°åˆ° DDR3 å†…å­˜ä¸­
+    //Ë¢ĞÂData Cache£¬Ë¢ĞÂÊı¾İ»º´æÒÔÈ·±£Ğ´Èë»º³åÇøµÄÊı¾İ±»¼°Ê±¸üĞÂµ½ DDR3 ÄÚ´æÖĞ
     Xil_DCacheFlushRange((UINTPTR)tx_buffer_ptr, MAX_PKT_LEN);
 
-    //å¯åŠ¨ AXI DMA çš„ç®€å•ä¼ è¾“æ“ä½œï¼Œå°†å†™å…¥ç¼“å†²åŒºçš„æ•°æ®ä» DDR3 å†…å­˜ä¼ è¾“åˆ° AXI Stream æ¥å£ï¼ˆå³ä¼ è¾“åˆ°å¤–éƒ¨è®¾å¤‡ï¼‰
+    //Æô¶¯ AXI DMA µÄ¼òµ¥´«Êä²Ù×÷£¬½«Ğ´Èë»º³åÇøµÄÊı¾İ´Ó DDR3 ÄÚ´æ´«Êäµ½ AXI Stream ½Ó¿Ú£¨¼´´«Êäµ½Íâ²¿Éè±¸£©
     status = XAxiDma_SimpleTransfer(&axidma, (UINTPTR) tx_buffer_ptr, MAX_PKT_LEN, XAXIDMA_DMA_TO_DEVICE);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
@@ -114,7 +114,7 @@ int main(void)
     
     while (!tx_done && !error)
     {
-        //ç­‰å¾…AXI DMAæ¬è¿å®Œä»DDR3åˆ°AXI Stream Data FIFOçš„æ•°æ®
+        //µÈ´ıAXI DMA°áÔËÍê´ÓDDR3µ½AXI Stream Data FIFOµÄÊı¾İ
     }
     
     if(error) {
@@ -129,7 +129,7 @@ int main(void)
 
     while (!rx_done && !error)
     {
-        //ç­‰å¾…AXI DMAæ¬è¿å®ŒAXI Stream Data FIFOåˆ°DDR3çš„æ•°æ®
+        //µÈ´ıAXI DMA°áÔËÍêAXI Stream Data FIFOµ½DDR3µÄÊı¾İ
     }
 
     if(error) {
@@ -137,7 +137,7 @@ int main(void)
         goto Done;
     }
 
-    //åˆ·æ–°DDR3ä¸­rx_buffer_ptrèµ·å§‹çš„MAX_PKT_LENä¸ªå­—èŠ‚ï¼Œç¡®ä¿ä»FIFOä¸­æ”¶åˆ°çš„æ•°æ®å†™å…¥åˆ°DDR3
+    //Ë¢ĞÂDDR3ÖĞrx_buffer_ptrÆğÊ¼µÄMAX_PKT_LEN¸ö×Ö½Ú£¬È·±£´ÓFIFOÖĞÊÕµ½µÄÊı¾İĞ´Èëµ½DDR3
     Xil_DCacheFlushRange((UINTPTR) rx_buffer_ptr, MAX_PKT_LEN);
 
     status = check_data(MAX_PKT_LEN, TEST_START_VALUE);
@@ -147,7 +147,7 @@ int main(void)
     }
 
     xil_printf("Successfully ran AXI DMA Loop\r\n");
-    //ç¦ç”¨AXI DMA IPä¸­æ–­
+    //½ûÓÃAXI DMA IPÖĞ¶Ï
     disable_intr_system(&intc, TX_INTR_ID, RX_INTR_ID);
 
     Done:xil_printf("----Exiting main()----\r\n");
@@ -155,9 +155,9 @@ int main(void)
 }
 
 /**
- * @description: æ¯”è¾ƒå‘DDR3ä¸­å†™å…¥çš„æ•°æ®ä¸ç»è¿‡DMAå¾ªç¯ä¹‹åçš„æ•°æ®æ˜¯å¦ä¸€è‡´
- * @param {int} length ä¼ è¾“æ•°æ®é•¿åº¦
- * @param {u8} start_value æ•°æ®åˆå§‹å€¼ï¼Œ0x0
+ * @description: ±È½ÏÏòDDR3ÖĞĞ´ÈëµÄÊı¾İÓë¾­¹ıDMAÑ­»·Ö®ºóµÄÊı¾İÊÇ·ñÒ»ÖÂ
+ * @param {int} length ´«ÊäÊı¾İ³¤¶È
+ * @param {u8} start_value Êı¾İ³õÊ¼Öµ£¬0x0
  * @return {*}
  */
 static int check_data(int length, u8 start_value)
@@ -186,12 +186,12 @@ static void tx_intr_handler(void *callback)
     u32 irq_status;
     XAxiDma *axidma_inst = (XAxiDma *)callback;
 
-    //è¯»å–å¾…å¤„ç†çš„ä¸­æ–­
+    //¶ÁÈ¡´ı´¦ÀíµÄÖĞ¶Ï
     irq_status = XAxiDma_IntrGetIrq(axidma_inst, XAXIDMA_DMA_TO_DEVICE);
-    //ç¡®è®¤å¾…å¤„ç†çš„ä¸­æ–­
+    //È·ÈÏ´ı´¦ÀíµÄÖĞ¶Ï
     XAxiDma_IntrAckIrq(axidma_inst, irq_status, XAXIDMA_DMA_TO_DEVICE);
 
-    //txå‡ºé”™
+    //tx³ö´í
     if ((irq_status & XAXIDMA_IRQ_ERROR_MASK)) {
         error = 1;
         XAxiDma_Reset(axidma_inst);
@@ -205,7 +205,7 @@ static void tx_intr_handler(void *callback)
         return ;
     }
 
-    //TXå®Œæˆï¼Œtx_doneè®¾ç½®ä¸º1ï¼Œè·³å‡ºmainå‡½æ•°ä¸­çš„whileå¾ªç¯ï¼Œè¿›è¡Œä¸‹ä¸€æ­¥æ“ä½œ
+    //TXÍê³É£¬tx_doneÉèÖÃÎª1£¬Ìø³ömainº¯ÊıÖĞµÄwhileÑ­»·£¬½øĞĞÏÂÒ»²½²Ù×÷
     if ((irq_status & XAXIDMA_IRQ_IOC_MASK))
         tx_done = 1;
 }
@@ -216,12 +216,12 @@ static void rx_intr_handler(void *callback)
     u32 irq_status;
     XAxiDma *axidma_inst = (XAxiDma *)callback;
 
-    //è¯»å–å¾…å¤„ç†çš„ä¸­æ–­
+    //¶ÁÈ¡´ı´¦ÀíµÄÖĞ¶Ï
     irq_status = XAxiDma_IntrGetIrq(axidma_inst, XAXIDMA_DEVICE_TO_DMA);
-    //ç¡®è®¤å¾…å¤„ç†çš„ä¸­æ–­
+    //È·ÈÏ´ı´¦ÀíµÄÖĞ¶Ï
     XAxiDma_IntrAckIrq(axidma_inst, irq_status, XAXIDMA_DEVICE_TO_DMA);
 
-    //rxå‡ºé”™
+    //rx³ö´í
     if ((irq_status & XAXIDMA_IRQ_ERROR_MASK)) {
         error = 1;
         XAxiDma_Reset(axidma_inst);
@@ -235,16 +235,16 @@ static void rx_intr_handler(void *callback)
         return ;
     }
 
-    //rxå®Œæˆï¼Œå°†rx_doneè®¾ç½®ä¸º1ï¼Œè·³å‡ºmainå‡½æ•°ä¸­çš„whileå¾ªç¯æ‰§è¡Œä¸‹ä¸€æ­¥
+    //rxÍê³É£¬½«rx_doneÉèÖÃÎª1£¬Ìø³ömainº¯ÊıÖĞµÄwhileÑ­»·Ö´ĞĞÏÂÒ»²½
     if ((irq_status & XAXIDMA_IRQ_IOC_MASK))
         rx_done = 1;
 }
 /**
- * @description: å»ºç«‹ä¸­æ–­ç³»ç»Ÿ
- * @param {XScuGic *} intr_inst_ptræ˜¯æŒ‡å‘Xscugicå®ä¾‹çš„æŒ‡é’ˆ
- * @param {XAxiDma *} axidma_ptræ˜¯æŒ‡å‘DMAå¼•æ“å®ä¾‹çš„æŒ‡é’ˆ
- * @param {u16} tx_intr_idæ˜¯TXé€šé“ä¸­æ–­ID
- * @param {u16} rx_intr_idæ˜¯RXé€šé“ä¸­æ–­ID
+ * @description: ½¨Á¢ÖĞ¶ÏÏµÍ³
+ * @param {XScuGic *} intr_inst_ptrÊÇÖ¸ÏòXscugicÊµÀıµÄÖ¸Õë
+ * @param {XAxiDma *} axidma_ptrÊÇÖ¸ÏòDMAÒıÇæÊµÀıµÄÖ¸Õë
+ * @param {u16} tx_intr_idÊÇTXÍ¨µÀÖĞ¶ÏID
+ * @param {u16} rx_intr_idÊÇRXÍ¨µÀÖĞ¶ÏID
  * @return {*}
  */
 static int setup_intr_system(XScuGic * intr_inst_ptr, XAxiDma * axidma_ptr, u16 tx_intr_id, u16 rx_intr_id)
@@ -252,56 +252,56 @@ static int setup_intr_system(XScuGic * intr_inst_ptr, XAxiDma * axidma_ptr, u16 
     int status;
     XScuGic_Config *intc_config;
 
-    //è·å–ä¸­æ–­æ§åˆ¶å™¨é…ç½®ä¿¡æ¯
+    //»ñÈ¡ÖĞ¶Ï¿ØÖÆÆ÷ÅäÖÃĞÅÏ¢
     intc_config = XScuGic_LookupConfig(INTC_DEVICE_ID);
     if(NULL == intc_config) {
         return XST_FAILURE;
     }
 
-    //åˆå§‹åŒ–ä¸­æ–­æ§åˆ¶å™¨
+    //³õÊ¼»¯ÖĞ¶Ï¿ØÖÆÆ÷
     status = XScuGic_CfgInitialize(intr_inst_ptr, intc_config, intc_config -> CpuBaseAddress);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
     }
 
-    //è®¾ç½®ä¼˜å…ˆçº§å’Œè§¦å‘ç±»å‹
+    //ÉèÖÃÓÅÏÈ¼¶ºÍ´¥·¢ÀàĞÍ
     XScuGic_SetPriorityTriggerType(intr_inst_ptr, tx_intr_id, 0xA0, 0x3);
     XScuGic_SetPriorityTriggerType(intr_inst_ptr, rx_intr_id, 0xA0, 0x3);
 
-    //å°†ä¸­æ–­å¤„ç†å‡½æ•°ä¸ä¼ è¾“å®Œæˆçš„ä¸­æ–­ ID ç›¸å…³è”èµ·æ¥
-    //ä¸­æ–­å¤„ç†å‡½æ•°ä¸æŒ‡å®šçš„ä¸­æ–­ ID ç›¸å…³è”èµ·æ¥çš„ä½œç”¨æ˜¯å»ºç«‹äº†ä¸­æ–­å¤„ç†å‡½æ•°ä¸ç‰¹å®šä¸­æ–­äº‹ä»¶ä¹‹é—´çš„æ˜ å°„å…³ç³»ã€‚
-    //è¿™ä¸ªæ˜ å°„å…³ç³»çš„å»ºç«‹ä½¿å¾—å½“ç‰¹å®šçš„ä¸­æ–­äº‹ä»¶å‘ç”Ÿæ—¶ï¼Œç³»ç»Ÿèƒ½å¤Ÿè‡ªåŠ¨è°ƒç”¨ç›¸åº”çš„ä¸­æ–­å¤„ç†å‡½æ•°æ¥è¿›è¡Œå¤„ç†ã€‚
+    //½«ÖĞ¶Ï´¦Àíº¯ÊıÓë´«ÊäÍê³ÉµÄÖĞ¶Ï ID Ïà¹ØÁªÆğÀ´
+    //ÖĞ¶Ï´¦Àíº¯ÊıÓëÖ¸¶¨µÄÖĞ¶Ï ID Ïà¹ØÁªÆğÀ´µÄ×÷ÓÃÊÇ½¨Á¢ÁËÖĞ¶Ï´¦Àíº¯ÊıÓëÌØ¶¨ÖĞ¶ÏÊÂ¼şÖ®¼äµÄÓ³Éä¹ØÏµ¡£
+    //Õâ¸öÓ³Éä¹ØÏµµÄ½¨Á¢Ê¹µÃµ±ÌØ¶¨µÄÖĞ¶ÏÊÂ¼ş·¢ÉúÊ±£¬ÏµÍ³ÄÜ¹»×Ô¶¯µ÷ÓÃÏàÓ¦µÄÖĞ¶Ï´¦Àíº¯ÊıÀ´½øĞĞ´¦Àí¡£
     status = XScuGic_Connect(intr_inst_ptr, tx_intr_id, (Xil_InterruptHandler) tx_intr_handler, axidma_ptr);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
     }
 
-    //å°†ä¸­æ–­å¤„ç†å‡½æ•°ä¸æ¥æ”¶å®Œæˆçš„ä¸­æ–­ ID ç›¸å…³è”èµ·æ¥
+    //½«ÖĞ¶Ï´¦Àíº¯ÊıÓë½ÓÊÕÍê³ÉµÄÖĞ¶Ï ID Ïà¹ØÁªÆğÀ´
     status = XScuGic_Connect(intr_inst_ptr, rx_intr_id, (Xil_InterruptHandler) rx_intr_handler, axidma_ptr);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
     }
 
-    //åœ¨å°†ä¸­æ–­å¤„ç†å‡½æ•°ä¸ç›¸åº”ä¸­æ–­IDç»‘å®šä¹‹åï¼Œè¿˜éœ€è¦å¯ç”¨ä¸­æ–­æ§åˆ¶å™¨ã€ä½¿èƒ½ä¸­æ–­æºã€ä½¿èƒ½ä¸­æ–­å¤„ç†å™¨
+    //ÔÚ½«ÖĞ¶Ï´¦Àíº¯ÊıÓëÏàÓ¦ÖĞ¶ÏID°ó¶¨Ö®ºó£¬»¹ĞèÒªÆôÓÃÖĞ¶Ï¿ØÖÆÆ÷¡¢Ê¹ÄÜÖĞ¶ÏÔ´¡¢Ê¹ÄÜÖĞ¶Ï´¦ÀíÆ÷
 
-    //ä½¿èƒ½ä¸­æ–­æº
+    //Ê¹ÄÜÖĞ¶ÏÔ´
     XScuGic_Enable(intr_inst_ptr, tx_intr_id);
     XScuGic_Enable(intr_inst_ptr, rx_intr_id);
 
-    //å¯ç”¨æ¥è‡ªç¡¬ä»¶çš„ä¸­æ–­ï¼Œè¿™ä¸‰ä¸ªå‡½æ•°æ˜¯ä¸€èµ·çš„ï¼Œä½¿èƒ½ä¸­æ–­å¤„ç†å™¨
+    //ÆôÓÃÀ´×ÔÓ²¼şµÄÖĞ¶Ï£¬ÕâÈı¸öº¯ÊıÊÇÒ»ÆğµÄ£¬Ê¹ÄÜÖĞ¶Ï´¦ÀíÆ÷
     Xil_ExceptionInit();
     Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT, (Xil_ExceptionHandler) XScuGic_InterruptHandler, (void *) intr_inst_ptr);
     Xil_ExceptionEnable();
 
-    //ä½¿èƒ½DMAä¸­æ–­ï¼Œä½¿å¾—DMAé€šé“åœ¨å‘é€å®Œå’Œæ¥æ”¶å®Œæ•°æ®ä¹‹åï¼Œäº§ç”Ÿç›¸åº”ä¸­æ–­ä¿¡å·
-    //XAXIDMA_IRQ_ALL_MASKå‚æ•°ï¼Œè¡¨ç¤ºä½¿èƒ½æ‰€æœ‰å¯èƒ½çš„ä¸­æ–­ç±»å‹
+    //Ê¹ÄÜDMAÖĞ¶Ï£¬Ê¹µÃDMAÍ¨µÀÔÚ·¢ËÍÍêºÍ½ÓÊÕÍêÊı¾İÖ®ºó£¬²úÉúÏàÓ¦ÖĞ¶ÏĞÅºÅ
+    //XAXIDMA_IRQ_ALL_MASK²ÎÊı£¬±íÊ¾Ê¹ÄÜËùÓĞ¿ÉÄÜµÄÖĞ¶ÏÀàĞÍ
     XAxiDma_IntrEnable(&axidma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
     XAxiDma_IntrEnable(&axidma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
 
     return XST_SUCCESS;
 }
 
-//æ­¤å‡½æ•°æ¥ç¦ç”¨DMAå¼•æ“ä¸­æ–­
+//´Ëº¯ÊıÀ´½ûÓÃDMAÒıÇæÖĞ¶Ï
 static void disable_intr_system(XScuGic * intr_inst_ptr, u16 tx_intr_id, u16 rx_intr_id)
 {
     XScuGic_Disconnect(intr_inst_ptr, tx_intr_id);

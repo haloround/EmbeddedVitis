@@ -1,8 +1,8 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Sun Mar 24 16:09:22 2024
-| Host         : DESKTOP-SO1BPCJ running 64-bit major release  (build 9200)
+| Date         : Tue Mar 26 14:53:51 2024
+| Host         : lyy running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file axi_dma_loop_wrapper_timing_summary_routed.rpt -pb axi_dma_loop_wrapper_timing_summary_routed.pb -rpx axi_dma_loop_wrapper_timing_summary_routed.rpx -warn_on_violation
 | Design       : axi_dma_loop_wrapper
 | Device       : 7z010-clg400

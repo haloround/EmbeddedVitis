@@ -16,17 +16,14 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loo
 # IP: bd/axi_dma_loop/ip/axi_dma_loop_xlconcat_0_2/axi_dma_loop_xlconcat_0_2.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_xlconcat_0_2 || ORIG_REF_NAME==axi_dma_loop_xlconcat_0_2} -quiet] -quiet
 
+# IP: bd/axi_dma_loop/ip/axi_dma_loop_auto_pc_0/axi_dma_loop_auto_pc_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_auto_pc_0 || ORIG_REF_NAME==axi_dma_loop_auto_pc_0} -quiet] -quiet
+
 # IP: bd/axi_dma_loop/ip/axi_dma_loop_ps7_0_axi_periph_4/axi_dma_loop_ps7_0_axi_periph_4.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_ps7_0_axi_periph_4 || ORIG_REF_NAME==axi_dma_loop_ps7_0_axi_periph_4} -quiet] -quiet
 
 # IP: bd/axi_dma_loop/ip/axi_dma_loop_rst_ps7_0_100M_4/axi_dma_loop_rst_ps7_0_100M_4.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_rst_ps7_0_100M_4 || ORIG_REF_NAME==axi_dma_loop_rst_ps7_0_100M_4} -quiet] -quiet
-
-# IP: bd/axi_dma_loop/ip/axi_dma_loop_axi_mem_intercon_4/axi_dma_loop_axi_mem_intercon_4.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_axi_mem_intercon_4 || ORIG_REF_NAME==axi_dma_loop_axi_mem_intercon_4} -quiet] -quiet
-
-# IP: bd/axi_dma_loop/ip/axi_dma_loop_auto_pc_0/axi_dma_loop_auto_pc_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_auto_pc_0 || ORIG_REF_NAME==axi_dma_loop_auto_pc_0} -quiet] -quiet
 
 # IP: bd/axi_dma_loop/ip/axi_dma_loop_xbar_0/axi_dma_loop_xbar_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_xbar_0 || ORIG_REF_NAME==axi_dma_loop_xbar_0} -quiet] -quiet
@@ -40,4 +37,7 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loo
 # IP: bd/axi_dma_loop/ip/axi_dma_loop_auto_pc_1/axi_dma_loop_auto_pc_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_auto_pc_1 || ORIG_REF_NAME==axi_dma_loop_auto_pc_1} -quiet] -quiet
 
-# XDC: d:/EmbeddedVitis/custom_ip/axi_dma_loop/axi_dma_loop.gen/sources_1/bd/axi_dma_loop/axi_dma_loop_ooc.xdc
+# IP: bd/axi_dma_loop/ip/axi_dma_loop_axi_mem_intercon_4/axi_dma_loop_axi_mem_intercon_4.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==axi_dma_loop_axi_mem_intercon_4 || ORIG_REF_NAME==axi_dma_loop_axi_mem_intercon_4} -quiet] -quiet
+
+# XDC: d:/lkx/EmbeddedVitis/axi_dma_loop/axi_dma_loop.gen/sources_1/bd/axi_dma_loop/axi_dma_loop_ooc.xdc
