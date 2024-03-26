@@ -2,7 +2,7 @@
  * @Author: lkx 1620558464@qq.com
  * @Date: 2024-03-24 16:14:58
  * @LastEditors: likaixiang 1620558464@qq.com
- * @LastEditTime: 2024-03-25 20:48:45
+ * @LastEditTime: 2024-03-26 14:37:32
  * @FilePath: \EmbeddedVitis\axi_dma_loop\vitis\axi_dma_loop\src\main.c
  * @Description: 
  */
@@ -64,25 +64,26 @@ int main(void)
 
     xil_printf("\r\n----Entering main()----\r\n");
 
-
+    //查找AXI DMA IP核的配置信息
     axidma_config = XAxiDma_LookupConfig(DMA_DEV_ID);
     if(!axidma_config) {
         xil_printf("No config found for %d\r\n", DMA_DEV_ID);
         return XST_FAILURE;
     }
 
-    //初始化DMA引擎
+    //初始化AXI DMA IP核引擎
     status = XAxiDma_CfgInitialize(&axidma, axidma_config);
     if(status != XST_SUCCESS) {
         xil_printf("Initialization failed %d\r\n", status);
         return XST_FAILURE;
     }
-
+    //本次实验中AXI DMA IP不需要设置为SG模式
     if(XAxiDma_HasSg(&axidma)) {
         xil_printf("Device configured as SG mode\r\n");
         return XST_FAILURE;
     }
 
+    //设置中断系统，并连接AXI DMA的中断处理函数
     status = setup_intr_system(&intc, &axidma, TX_INTR_ID, RX_INTR_ID);
     if(status != XST_SUCCESS) {
         xil_printf("Failed intr setup\r\n");
@@ -90,10 +91,11 @@ int main(void)
     }
 
     //初始化标志信号
-    tx_done = 0;
-    rx_done = 0;
-    error = 0;
+    tx_done = 0;//发送操作完成时，设置为1
+    rx_done = 0;//接收操作完成时，设置为1
+    error = 0;//标志是否发生错误
 
+    //将256个数据写入发送缓冲区tx_buffer_ptr
     value = TEST_START_VALUE;
     for (int i = 0; i < MAX_PKT_LEN; i++)
     {
@@ -101,10 +103,11 @@ int main(void)
         value = (value + 1) & 0xFF;
     }
 
-    //刷新Data Cache
+    //刷新Data Cache，刷新数据缓存以确保写入缓冲区的数据被及时更新到 DDR3 内存中
     Xil_DCacheFlushRange((UINTPTR)tx_buffer_ptr, MAX_PKT_LEN);
 
-    status = XAxiDma_SimpleTransfer(&axidma, (UINTPTR)tx_buffer_ptr, MAX_PKT_LEN, XAXIDMA_DMA_TO_DEVICE);
+    //启动 AXI DMA 的简单传输操作，将写入缓冲区的数据从 DDR3 内存传输到 AXI Stream 接口（即传输到外部设备）
+    status = XAxiDma_SimpleTransfer(&axidma, (UINTPTR) tx_buffer_ptr, MAX_PKT_LEN, XAXIDMA_DMA_TO_DEVICE);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
     }
@@ -134,6 +137,7 @@ int main(void)
         goto Done;
     }
 
+    //刷新DDR3中rx_buffer_ptr起始的MAX_PKT_LEN个字节，确保从FIFO中收到的数据写入到DDR3
     Xil_DCacheFlushRange((UINTPTR) rx_buffer_ptr, MAX_PKT_LEN);
 
     status = check_data(MAX_PKT_LEN, TEST_START_VALUE);
@@ -143,12 +147,19 @@ int main(void)
     }
 
     xil_printf("Successfully ran AXI DMA Loop\r\n");
+    //禁用AXI DMA IP中断
     disable_intr_system(&intc, TX_INTR_ID, RX_INTR_ID);
 
     Done:xil_printf("----Exiting main()----\r\n");
     return XST_SUCCESS;
 }
 
+/**
+ * @description: 比较向DDR3中写入的数据与经过DMA循环之后的数据是否一致
+ * @param {int} length 传输数据长度
+ * @param {u8} start_value 数据初始值，0x0
+ * @return {*}
+ */
 static int check_data(int length, u8 start_value)
 {
     u8 value;
@@ -194,7 +205,7 @@ static void tx_intr_handler(void *callback)
         return ;
     }
 
-    //TX完成
+    //TX完成，tx_done设置为1，跳出main函数中的while循环，进行下一步操作
     if ((irq_status & XAXIDMA_IRQ_IOC_MASK))
         tx_done = 1;
 }
@@ -224,7 +235,7 @@ static void rx_intr_handler(void *callback)
         return ;
     }
 
-    //rx完成
+    //rx完成，将rx_done设置为1，跳出main函数中的while循环执行下一步
     if ((irq_status & XAXIDMA_IRQ_IOC_MASK))
         rx_done = 1;
 }
@@ -240,12 +251,14 @@ static int setup_intr_system(XScuGic * intr_inst_ptr, XAxiDma * axidma_ptr, u16 
 {
     int status;
     XScuGic_Config *intc_config;
-    
+
+    //获取中断控制器配置信息
     intc_config = XScuGic_LookupConfig(INTC_DEVICE_ID);
     if(NULL == intc_config) {
         return XST_FAILURE;
     }
 
+    //初始化中断控制器
     status = XScuGic_CfgInitialize(intr_inst_ptr, intc_config, intc_config -> CpuBaseAddress);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
@@ -255,26 +268,33 @@ static int setup_intr_system(XScuGic * intr_inst_ptr, XAxiDma * axidma_ptr, u16 
     XScuGic_SetPriorityTriggerType(intr_inst_ptr, tx_intr_id, 0xA0, 0x3);
     XScuGic_SetPriorityTriggerType(intr_inst_ptr, rx_intr_id, 0xA0, 0x3);
 
-
+    //将中断处理函数与传输完成的中断 ID 相关联起来
+    //中断处理函数与指定的中断 ID 相关联起来的作用是建立了中断处理函数与特定中断事件之间的映射关系。
+    //这个映射关系的建立使得当特定的中断事件发生时，系统能够自动调用相应的中断处理函数来进行处理。
     status = XScuGic_Connect(intr_inst_ptr, tx_intr_id, (Xil_InterruptHandler) tx_intr_handler, axidma_ptr);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
     }
 
+    //将中断处理函数与接收完成的中断 ID 相关联起来
     status = XScuGic_Connect(intr_inst_ptr, rx_intr_id, (Xil_InterruptHandler) rx_intr_handler, axidma_ptr);
     if(status != XST_SUCCESS) {
         return XST_FAILURE;
     }
 
+    //在将中断处理函数与相应中断ID绑定之后，还需要启用中断控制器、使能中断源、使能中断处理器
+
+    //使能中断源
     XScuGic_Enable(intr_inst_ptr, tx_intr_id);
     XScuGic_Enable(intr_inst_ptr, rx_intr_id);
 
-    //启用来自硬件的中断，这三个函数是一起的
+    //启用来自硬件的中断，这三个函数是一起的，使能中断处理器
     Xil_ExceptionInit();
     Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT, (Xil_ExceptionHandler) XScuGic_InterruptHandler, (void *) intr_inst_ptr);
     Xil_ExceptionEnable();
 
-    //使能DMA中断
+    //使能DMA中断，使得DMA通道在发送完和接收完数据之后，产生相应中断信号
+    //XAXIDMA_IRQ_ALL_MASK参数，表示使能所有可能的中断类型
     XAxiDma_IntrEnable(&axidma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
     XAxiDma_IntrEnable(&axidma, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DEVICE_TO_DMA);
 
